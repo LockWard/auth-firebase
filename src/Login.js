@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import fire from './Fire';
+//import { Link } from 'react-router-dom';
+import fire from './config/Fire';
 
 class Login extends Component {
 
@@ -11,7 +12,7 @@ class Login extends Component {
         this.state = {
             email:'',
             password:''
-        }
+        };
     }
 
 login (e) {
@@ -23,17 +24,14 @@ login (e) {
     });
 }
 
-signup (e) {
+signup(e){
     e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-
-    }).then((u) => {    
-        console.log(u);
-    }).cath((error) => {
+    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+    }).then((u)=>{console.log(u)})
+    .catch((error) => {
         console.log(error);
-        
-    });
-}
+      })
+  }
 
 handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
