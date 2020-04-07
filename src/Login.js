@@ -21,11 +21,11 @@ class Login extends Component {
 login (e) {
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-
-    }).cath((error) => {
+    }).then((u)=>{console.log(u)})
+    .catch((error) => {
         console.log(error);
-    });
-}
+      })
+  }
 
 signup(e){
     e.preventDefault();
@@ -85,7 +85,7 @@ render() {
                         <input type='password' className='input' value={this.state.password} onChange={this.handleChange} name='password' id='exampleInputPassword1' aria-describedby='emailHelp' placeholder='Enter Password'></input>
                     </div>                    
                 </div>
-                
+                <a href=''>Forgot Password?</a>
                 <input type='submit' className='btn' value='Login' onClick={this.login}></input>
                 <input type='submit' className='btn' value='Signup' onClick={this.signup}></input>
             </form>
